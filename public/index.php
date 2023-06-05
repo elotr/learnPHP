@@ -1,37 +1,25 @@
 <?php
 
-// var_dump($_SERVER);
-
 // require_once __DIR__ . '../src/Router.php';
 
-
-
 require __DIR__ . '/../vendor/autoload.php'; // composeriga. allpool ilma composerita.   termianlis: composer dump-autoload, muudab json failis route, autoload 2ra.
-// spl_autoload_register(function($class) {
-//     //var_dump($class);
-//     $class = substr($class, strlen('App\\')); // ignoreerib nelja esimest t2hte, App\
-//     //var_dump($class);
-//     require_once __DIR__ . "/../src/$class.php";
-// });
-
-
-//use App\Controllers\PublicController as Controller; // saab pika nime teha lyhikeseks. hea, kui tihti vaja kasutada.
+require __DIR__ . '/../routes.php';
+require __DIR__ . '/../helpers.php';
 
 $router = new App\Router($_SERVER['REQUEST_URI']);
-
-// $dog = new App\Dog();
-// $controller = new Controller; // App\Controllers\PublicController; <- t2ispikk nimi
-//dump($__SERVER); // t6mmatud package symfony var-dumper kasutamine (kui vendor autoload on juba kuskil kasutuses , vt yles required)
-
-// switch($_SERVER['REQUEST_URI']) {
-//     case '/':
-//         $name = 'Nimi';
-//         require 'views/index.php';
-//         break;
-//     case '/about';
-//         require 'views/about.php';
-//         break;
-//     default:
-//         echo '404';
-//         break;
-// }
+$match = $router->match();
+if($match){
+    if(is_callable($match['action'])){
+        call_user_func($match['action']);
+    }
+    elseif (is_array($match['action']) && isset($match['action'][0]) && isset($match['action'][1])){
+        $class = $match['action'][0];
+        $controller = new $className();
+        $method = $match['action'][1];
+        $controller->$method();
+    }
+    
+}
+else {
+    echo '404';
+}
