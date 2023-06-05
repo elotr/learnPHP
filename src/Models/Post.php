@@ -11,6 +11,6 @@ class Post extends Model {
     public $body;
 
     public function snippet() {
-        return substr($this->body, 0, 1);
+        return substr($this->body, 0);
     }
 }

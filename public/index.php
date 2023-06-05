@@ -1,6 +1,8 @@
 <?php
 
-// require_once __DIR__ . '../src/Router.php';
+if(preg_match('/\.(?:png|jpg|jpeg|gif|css|js|mp4)$/', $_SERVER["REQUEST_URI"])) { //kui fail l6ppeb nii, siis loeb sisse.
+    return false;
+}
 
 require __DIR__ . '/../vendor/autoload.php'; // composeriga. allpool ilma composerita.   termianlis: composer dump-autoload, muudab json failis route, autoload 2ra.
 require __DIR__ . '/../routes.php';
