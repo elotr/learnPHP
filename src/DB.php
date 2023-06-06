@@ -19,7 +19,7 @@ class DB {
 
         // set the resulting array to associative
         $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
-        return $stmt -> fetchAll();  // tagastab jada
+        return $stmt->fetchAll();  // tagastab jada
     }
 
     public function find($table, $class, $id) {
@@ -28,7 +28,7 @@ class DB {
 
         // set the resulting array to associative
         $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
-        return $stmt -> fetch(); // tagastab yhe elemendi
+        return $stmt->fetch(); // tagastab yhe elemendi
     }
 
     public function where($table, $class, $field, $value) {
@@ -37,7 +37,7 @@ class DB {
 
         // set the resulting array to associative
         $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
-        return $stmt -> fetchAll(); // tagastab yhe elemendi
+        return $stmt->fetchAll(); // tagastab yhe elemendi
     }
 
     public function insert($table, $fields, $values) {

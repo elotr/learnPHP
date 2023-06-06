@@ -17,6 +17,9 @@ class PostController {
     }
 
     public function store() {
+        move_uploaded_files($_FILES['image']['tmp_name'], 'public/uploads' . $_FILES['image']['name']);
+        dd($_POST, $_FILES);
+
         $post = new Post();
         $post->title = $_POST['title'];
         $post->body = $_POST['body'];

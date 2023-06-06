@@ -10,7 +10,7 @@
         <div class="field">
             <label class="label" for="password">Password</label>
             <div class="control">
-                <input id="password" class="input" type="password" placeholder="Password" name="password">
+                <input id="password" class="input" type="password" name="password">
             </div>
         </div>
         <div class="field is-grouped">

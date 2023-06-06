@@ -1,6 +1,6 @@
 <?php require __DIR__ .  '/../partials/header.php' ?>
 <div class="container">
-    <form action="/admin/posts" method="POST">
+    <form action="/admin/posts" method="POST" enctype="multipart/form-data"> <!-- failide lisamiseks postitustele -->
         <div class="field">
             <label class="label" for="title">Title</label>
             <div class="control">
@@ -13,6 +13,14 @@
                 <textarea id="title" class="textarea" placeholder="Post content" name="body"></textarea>
             </div>
         </div>
+
+        <div class="field">
+            <label class="label" for="image">Image</label>
+            <div class="control">
+                <input id="image" class="input" type="file" name="image">
+            </div>
+        </div>
+
         <div class="field is-grouped">
             <div class="control">
                 <input type="submit" class="button is-link">

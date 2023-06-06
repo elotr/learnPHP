@@ -13,8 +13,10 @@ class AuthController {
     }
     public function login() {
         $user = User::where('email', $_POST['email'])[0];
-        if($user->password === md5($_POST['password'])) {
+
+        if(password_verify($_POST['password'], $user->password)) {
             $_SESSION['userId'] = $user->id;
+            header('Location: /login');
         }
         else {
             header('Location: /register');
@@ -24,7 +26,7 @@ class AuthController {
         if($_POST['password'] === $_POST['password_confirm']){
             $user = new User();
             $user->email = $_POST['email'];
-            $user->password = md5($_POST['password']);
+            $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $user->save();
             header('Location: /login');
         }
@@ -32,7 +34,6 @@ class AuthController {
             header('Location: /register');
         }
         
-
     }
 
 }
