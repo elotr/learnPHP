@@ -27,7 +27,17 @@ class DB {
         $stmt->execute();
 
         // set the resulting array to associative
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
         return $stmt -> fetch(); // tagastab yhe elemendi
     }
+
+    public function insert($table, $fields, $values) {
+        $fieldNamesLine = implode(', ', $fields);
+        $valuesLine = implode("', '", $values);
+        $sql = "INSERT INTO $table ($fieldNamesLine) VALUES ('$valuesLine')";
+        //dd($fieldNamesLine, $valuesLine, $sql);
+        $this->conn->exec($sql);
+
+    }
+
 }

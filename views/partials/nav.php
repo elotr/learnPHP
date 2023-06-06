@@ -21,6 +21,10 @@
         About
       </a>
 
+      <a class="navbar-item" href="/admin/posts">
+        Admin
+      </a>
+
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">

@@ -16,4 +16,14 @@ abstract class Model {
         $db = new DB;
         return $db->all(static::$table, static::class, $id);
     }
+
+    public function save() {
+        $db = new DB();
+        $vars = get_object_vars($this);
+        unset($vars['id']);
+        $fields = array_keys($vars);
+        $values = array_values($vars);
+        //dump($fields, $values);
+        $db->insert(static::$table, $fields, $values);
+    }
 }

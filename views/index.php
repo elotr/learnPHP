@@ -1,6 +1,5 @@
 <?php require 'partials/header.php' ?>
 <div class="container">
-
     <?php foreach ($posts as $post) : ?>
         <div class="card mt-3">
             <header class="card-header">
@@ -16,7 +15,6 @@
 
         </div>
     <?php endforeach; ?>
-
 </div>
 
 <?php require 'partials/footer.php' ?>
