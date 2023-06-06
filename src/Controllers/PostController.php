@@ -17,14 +17,37 @@ class PostController {
     }
 
     public function store() {
-        //dump($_GET);
-        //dump($_POST);
-        //dump($_REQUEST); // get ja post korraga n2ha. pole turvaline. 
-        //dump($_SERVER);
-
         $post = new Post();
         $post->title = $_POST['title'];
         $post->body = $_POST['body'];
         $post->save();
+        
+        header('Location: /admin/posts'); // ymbersuunamine create lehelt posts lehele
     }
+
+    public function show() {
+        $post= Post::find($_GET['id']);
+        view('posts/show', compact('post'));
+    }
+
+    public function edit() {
+        $post= Post::find($_GET['id']);
+        view('posts/edit', compact('post'));
+    }
+
+    public function update() {
+        $post= Post::find($_GET['id']);
+        $post->title = $_POST['title'];
+        $post->body = $_POST['body'];
+        $post->save();
+        header('Location: /admin/posts');
+    }
+
+    public function destroy() {
+        $post= Post::find($_GET['id']);
+        $post->delete();
+        header('Location: /admin/posts');
+    }
+
+    
 }

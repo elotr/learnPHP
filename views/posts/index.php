@@ -16,13 +16,13 @@
                     <td>
                         <div class="field has-addons">
                             <p class="control">
-                                <a class="button is-link">View</a>
+                                <a class="button is-link" href="/admin/posts/show?id=<?=$post->id?>">View</a>
                             </p>
                             <p class="control">
-                                <a class="button is-warning">Edit</a>
+                                <a class="button is-warning" href="/admin/posts/edit?id=<?=$post->id?>">Edit</a>
                             </p>
                             <p class="control">
-                                <a class="button is-danger">Delete</a>
+                                <a class="button is-danger" href="/admin/posts/delete?id=<?=$post->id?>">Delete</a>
                             </p>
                         </div>
                     </td>

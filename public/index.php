@@ -4,6 +4,8 @@ if(preg_match('/\.(?:png|jpg|jpeg|gif|css|js|mp4)$/', $_SERVER["REQUEST_URI"])) 
     return false;
 }
 
+session_start();
+
 require __DIR__ . '/../vendor/autoload.php'; // composeriga. allpool ilma composerita.   termianlis: composer dump-autoload, muudab json failis route, autoload 2ra.
 require __DIR__ . '/../routes.php';
 require __DIR__ . '/../helpers.php';
